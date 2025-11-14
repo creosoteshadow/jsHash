@@ -1,4 +1,4 @@
-jsHash – ultra-fast, keyed, streamable non-cryptographic hash
+## jsHash – ultra-fast, keyed, streamable non-cryptographic hash
 
     • 15.7 GB/s bulk processing speed on a modern x86-64 CPU (single-thread)
     • Header-only, standard C++
@@ -8,25 +8,29 @@ jsHash – ultra-fast, keyed, streamable non-cryptographic hash
     • Excellent avalanche (≈32 bit flips per input bit)
     • Fully keyed – same data → different hash per seed
 
-Easy to use -- just include "jsHash.h"
+## Easy to use -- just include "jsHash.h"
     
-    #include <cstdint>
-    #include <iostream>
-    #include "jsHash.h"
-    
-    int main() {
-        uint64_t key = 54321;
-        jsHash Hasher(key);
-    
-        Hasher.insert(std::string("This is my input data."));
-        uint64_t hashval = Hasher.hash64();
-    
-        std::cout << "hashval = " << hashval << "\n";
-    
-        return EXIT_SUCCESS;
-    }
+        // Easy to use — just include "jsHash.h"
+        #include <iostream>
+        #include <string>
+        #include "jsHash.h"
+        
+        int main() {
+            jsHash hasher(54321);  // Keyed hash
+        
+            hasher.insert("This is my input data.");
+            uint64_t hash = hasher.hash64();
+        
+            std::cout << "hash = " << hash << '\n';
+        
+            return 0;
+        }
 
-Security Notice
+    Or, a 1-liner
+
+        uint64_t hash = Hash64("Hello!", 6, 42);
+
+## Security Notice
 
     While this hash has a secure mode, a true cryptographic
     has has undergone extensive industry review that this one has not. For
@@ -34,7 +38,7 @@ Security Notice
     undergone this extensive review process. Consider using BLAKE3 or KMAC
     for applications needing cryptographic quality hashing.
 
-Design (four parallel lanes):
+## Design (four parallel lanes):
     
     • lane0 … lane3  ←  independent 64-bit accumulators
     each 32-byte input block is split into four 64-bit words
@@ -45,7 +49,7 @@ Design (four parallel lanes):
     cross-mixes the lanes, and XOR-folds the result. Optionally, finalization
     routines are available to encrypt the hash results.
 
-User Interface
+## User Interface
     
     • Constructor
         jsHash(uint64_t key)
@@ -75,7 +79,7 @@ User Interface
                 uint64_t seed = 42,
                 const ChaCha::ChaChaNonce& nonce = {});
 
-Limitations
+## Limitations
     
     - This hash function will generate securely generated hash
       values, but takes an unconventional approach. For applications
@@ -86,7 +90,7 @@ Limitations
       multiplication intrinsic, _umul128, or the gnu __uint128_t.
         The portable fallback is much slower.
 
-Programming notes
+## Programming notes
 
     1) The finalization functions cannot be made constexpr, since they rely
         on the _umul128 intrinsic which is not constexpr.
@@ -95,11 +99,11 @@ Programming notes
     3) A portable implementation is in place for unrecognized compilers.
         This is likely 3-4X slower than the intrinsic version.
 
-Test results:
+## Test results:
 
     See separate file test_jsHash for code and results.
 
-License
+## License
 
     [MIT License](LICENSE) – free for commercial use, modification, distribution, and private use.
 
