@@ -1,0 +1,46 @@
+Determinism test:
+        828560291680242088      828560291680242088
+        Pass
+
+Non-commutative test:
+        Pass
+
+Avalanche test:
+        Average bit difference = 32.0077
+        Pass
+
+Thread pinned to CPU core 0.
+Hashed 68.719 GB in 4.353 s, 15.787 GB/s
+Thread pinned to CPU core 1.
+Hashed 68.719 GB in 4.352 s, 15.790 GB/s
+Thread pinned to CPU core 2.
+Hashed 68.719 GB in 4.365 s, 15.743 GB/s
+Thread pinned to CPU core 3.
+Hashed 68.719 GB in 4.354 s, 15.783 GB/s
+Thread pinned to CPU core 4.
+Hashed 68.719 GB in 4.371 s, 15.720 GB/s
+Thread pinned to CPU core 5.
+Hashed 68.719 GB in 4.361 s, 15.758 GB/s
+Thread pinned to CPU core 6.
+Hashed 68.719 GB in 4.362 s, 15.756 GB/s
+Thread pinned to CPU core 7.
+Hashed 68.719 GB in 4.365 s, 15.743 GB/s
+
+Collision resistance test (1000000 samples):
+        Pass: No collisions (expected ~0.0000000271 by birthday paradox)
+
+Uniformity test (chi^2 on high byte):
+        chi^2 = 278.8292608000 (threshold ~336 for p=0.001)
+        Pass
+
+Seed sensitivity test (1M consecutive seeds):
+        Average bit difference = 32.0084740000
+        Pass
+
+Incremental vs bulk test:
+        Pass
+
+Edge cases:
+        Empty hash: 13546448014017083291
+        insert(nullptr,0) == default: Pass
+        Single byte repeatable: Pass
