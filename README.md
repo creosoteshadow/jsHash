@@ -101,4 +101,8 @@ Test results:
 
 License
 
-    MIT
+    [MIT License](LICENSE) – free for commercial use, modification, distribution, and private use.
+
+    
+
+
