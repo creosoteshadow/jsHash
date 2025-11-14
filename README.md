@@ -8,6 +8,24 @@ jsHash – ultra-fast, keyed, streamable non-cryptographic hash
     • Excellent avalanche (≈32 bit flips per input bit)
     • Fully keyed – same data → different hash per seed
 
+Easy to use -- just include "jsHash.h"
+    
+    #include <cstdint>
+    #include <iostream>
+    #include "jsHash.h"
+    
+    int main() {
+        uint64_t key = 54321;
+        jsHash Hasher(key);
+    
+        Hasher.insert(std::string("This is my input data."));
+        uint64_t hashval = Hasher.hash64();
+    
+        std::cout << "hashval = " << hashval << "\n";
+    
+        return EXIT_SUCCESS;
+    }
+
 Security Notice
 
     While this hash has a secure mode, a true cryptographic
