@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![jsHash](https://img.shields.io/badge/jsHash-15.7_GB/s-00CC00.svg)](https://github.com/creosoteshadow/jsHash)
+
 ## jsHash – ultra-fast, keyed, streamable non-cryptographic hash
 
     • 15.7 GB/s bulk processing speed on a modern x86-64 CPU (single-thread)
