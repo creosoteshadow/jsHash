@@ -1,5 +1,6 @@
 #pragma once
 // File jsHash.h
+// MIT License. Copyright (c) 2025 Jim Staley. See LICENSE for details.
 
 /*
 file jsHash.h
